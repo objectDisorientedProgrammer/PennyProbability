@@ -2,9 +2,11 @@ package penny;
 
 import java.util.Random;
 
-public class Penny {
+public class Penny
+{
 	private String name = "no name";
 	private String side = "default";
+	
 	public Penny()
 	{
 		super();
@@ -24,6 +26,7 @@ public class Penny {
 		else
 			side = "tails";
 	}
+	
 	public void resetSide()
 	{
 		side = "null";
@@ -34,7 +37,8 @@ public class Penny {
 		return side;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 }

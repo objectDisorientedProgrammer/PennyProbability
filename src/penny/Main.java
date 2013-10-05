@@ -1,3 +1,5 @@
+// To Do: make PennyFlipper.java and move code from Main into it...or rename Main and add methods
+
 package penny;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class Main {
 		totalTries *= multiplier;
 		for(int i = 0; i < totalTries; i++)
 		{
+			// Flip all pennies
 			for(int j = 0; j < 6; j++)
 			{
 				pennies.get(j).flip();
@@ -30,18 +33,16 @@ public class Main {
 						 && pennies.get(4).getSide().equalsIgnoreCase("heads") && pennies.get(5).getSide().equalsIgnoreCase("heads"))
 				{
 					headCount++;
-					//System.out.println(pennies.get(j).getName() + " is " + pennies.get(j).getSide());
-					//System.out.println("<====================================== ALL HEADS");
 				}
-				//else
-					//System.out.println(pennies.get(j).getName() + " is " + pennies.get(j).getSide());
-				
 			}
-			for (Penny penny : pennies) {
+			
+			for (Penny penny : pennies)
+			{
 				penny.resetSide();
 			}
 		}
 		average = headCount/totalTries;
+		
 		System.out.print("Out of " + totalTries + " tries on " + pennies.size() + " pennies, ");
 		// display proper string if only one head was flipped
 		if(headCount == 1)
