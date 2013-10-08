@@ -14,7 +14,8 @@ public class PennyFlipper
 	public PennyFlipper()
 	{
 		super();
-		createPennies();
+		// get user input
+		createPennies(6);
 		
 		double totalTries = 64;	// out of 6 pennies, there's a 1/64 chance for all heads
 		double multiplier = 1;	// how many multiples of 64
@@ -55,14 +56,14 @@ public class PennyFlipper
 		System.out.println("Flipped all heads " + average*100 +"% of the time.");
 	}
 	
-	private void createPennies()
+	/**
+	 * Adds pennies to an ArrayList for future use.
+	 * @param numberOfPennies - the number of pennies to add.
+	 */
+	private void createPennies(int numberOfPennies)
 	{
 		pennies = new ArrayList<Penny>();
-		pennies.add(new Penny("p1"));
-		pennies.add(new Penny("p2"));
-		pennies.add(new Penny("p3"));
-		pennies.add(new Penny("p4"));
-		pennies.add(new Penny("p5"));
-		pennies.add(new Penny("p6"));
+		for(int i = 1; i <= numberOfPennies; i++)
+			pennies.add(new Penny("p"+i));
 	}
 }
