@@ -9,12 +9,14 @@ import java.util.ArrayList;
 
 public class PennyFlipper
 {
-
 	private ArrayList<Penny> pennies;
+	// add variables to store user input
+
 	public PennyFlipper()
 	{
 		super();
 		// get user input
+		//getUserInput();
 		createPennies(6);
 		
 		double totalTries = 64;	// out of 6 pennies, there's a 1/64 chance for all heads
@@ -56,6 +58,13 @@ public class PennyFlipper
 		System.out.println("Flipped all heads " + average*100 +"% of the time.");
 	}
 	
+	private void getUserInput()
+	{
+		// set up buffer
+		// prompt user
+		// store values
+	}	
+		
 	/**
 	 * Adds pennies to an ArrayList for future use.
 	 * @param numberOfPennies - the number of pennies to add.
