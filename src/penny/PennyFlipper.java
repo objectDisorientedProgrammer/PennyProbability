@@ -6,19 +6,20 @@
 package penny;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PennyFlipper
 {
-
+	private double multiplier = 1;	// how many multiples of 64
 	private ArrayList<Penny> pennies;
+	
 	public PennyFlipper()
 	{
 		super();
-		// get user input
+		getUserInput();
 		createPennies(6);
 		
 		double totalTries = 64;	// out of 6 pennies, there's a 1/64 chance for all heads
-		double multiplier = 1;	// how many multiples of 64
 		double average = 0;
 		double headCount = 0;
 		
@@ -56,6 +57,14 @@ public class PennyFlipper
 		System.out.println("Flipped all heads " + average*100 +"% of the time.");
 	}
 	
+	private void getUserInput()
+	{
+		Scanner s = new Scanner(System.in);
+		System.out.println("How many times would you like to run the simulation?");
+		multiplier = s.nextDouble();
+		s.close();
+	}
+
 	/**
 	 * Adds pennies to an ArrayList for future use.
 	 * @param numberOfPennies - the number of pennies to add.
