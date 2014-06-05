@@ -10,17 +10,17 @@ import java.util.Scanner;
 
 public class PennyFlipper
 {
-	private double multiplier = 1;	// how many multiples of 64
+	private double multiplier = 1;		// how many multiples of 64
 	private ArrayList<Penny> pennies;
+	private int numberOfPennies = 0;
 	
 	public PennyFlipper()
 	{
 		super();
 		// get user input
 		getUserInput();
-		createPennies(6);
-		
-		double totalTries = 64;	// out of 6 pennies, there's a 1/64 chance for all heads
+		createPennies(numberOfPennies);
+		double totalTries = Math.pow(2, numberOfPennies);
 		double average = 0;
 		double headCount = 0;
 		
@@ -28,7 +28,7 @@ public class PennyFlipper
 		for(int i = 0; i < totalTries; i++)
 		{
 			// Flip all pennies
-			for(int j = 0; j < 6; j++)
+			for(int j = 0; j < numberOfPennies; j++)
 			{
 				pennies.get(j).flip();
 				
@@ -61,6 +61,8 @@ public class PennyFlipper
 	private void getUserInput()
 	{
 		Scanner s = new Scanner(System.in);
+		System.out.println("How many pennies?");
+		numberOfPennies = s.nextInt();
 		System.out.println("How many times would you like to run the simulation?");
 		multiplier = s.nextDouble();
 		s.close();
