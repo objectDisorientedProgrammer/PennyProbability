@@ -12,7 +12,7 @@ public class PennyFlipper
 {
 	private double multiplier = 1;		// how many multiples of 64
 	private ArrayList<Penny> pennies;
-	private int numberOfPennies = 0;
+	private int numberOfPennies = 6;
 	
 	public PennyFlipper()
 	{
@@ -21,7 +21,6 @@ public class PennyFlipper
 		getUserInput();
 		createPennies(numberOfPennies);
 		double totalTries = Math.pow(2, numberOfPennies);
-		double average = 0;
 		double headCount = 0;
 		
 		totalTries *= multiplier;
@@ -36,17 +35,25 @@ public class PennyFlipper
 						&& pennies.get(2).getSide().equalsIgnoreCase("heads") && pennies.get(3).getSide().equalsIgnoreCase("heads")
 						 && pennies.get(4).getSide().equalsIgnoreCase("heads") && pennies.get(5).getSide().equalsIgnoreCase("heads"))
 				{
-					headCount++;
+					++headCount;
 				}
 			}
 			
-			for (Penny penny : pennies)
-			{
+			for(Penny penny : pennies)
 				penny.resetSide();
-			}
 		}
-		average = headCount/totalTries;
 		
+		printStats(totalTries, headCount);
+	}
+
+	/**
+	 * Display a message with statistics.
+	 * @param totalTries - number of times simulation is run.
+	 * @param headCount - number of times 'heads' showed up.
+	 */
+	private void printStats(double totalTries, double headCount)
+	{
+		double average = headCount/totalTries;
 		System.out.print("Out of " + totalTries + " tries on " + pennies.size() + " pennies, ");
 		// display proper string if only one head was flipped
 		if(headCount == 1)
@@ -58,11 +65,14 @@ public class PennyFlipper
 		System.out.println("Flipped all heads " + average*100 +"% of the time.");
 	}
 	
+	/**
+	 * Setup simulation.
+	 */
 	private void getUserInput()
 	{
 		Scanner s = new Scanner(System.in);
-		System.out.println("How many pennies?");
-		numberOfPennies = s.nextInt();
+		//System.out.println("How many pennies?"); TODO
+		//numberOfPennies = s.nextInt();
 		System.out.println("How many times would you like to run the simulation?");
 		multiplier = s.nextDouble();
 		s.close();
