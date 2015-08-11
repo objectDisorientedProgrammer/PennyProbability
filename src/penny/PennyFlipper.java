@@ -5,13 +5,12 @@
 
 package penny;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PennyFlipper
 {
 	private double multiplier = 1;		// how many multiples of 64
-	private ArrayList<Penny> pennies;
+	private Penny[] pennies;
 	private int numberOfPennies = 6;
 	
 	public PennyFlipper()
@@ -29,11 +28,11 @@ public class PennyFlipper
 			// Flip all pennies
 			for(int j = 0; j < numberOfPennies; j++)
 			{
-				pennies.get(j).flip();
+				pennies[j].flip();
 				
-				if(pennies.get(0).getSide().equalsIgnoreCase("heads") && pennies.get(1).getSide().equalsIgnoreCase("heads")
-						&& pennies.get(2).getSide().equalsIgnoreCase("heads") && pennies.get(3).getSide().equalsIgnoreCase("heads")
-						 && pennies.get(4).getSide().equalsIgnoreCase("heads") && pennies.get(5).getSide().equalsIgnoreCase("heads"))
+				if(pennies[0].getSide().equalsIgnoreCase("heads") && pennies[1].getSide().equalsIgnoreCase("heads")
+						&& pennies[2].getSide().equalsIgnoreCase("heads") && pennies[3].getSide().equalsIgnoreCase("heads")
+						 && pennies[4].getSide().equalsIgnoreCase("heads") && pennies[5].getSide().equalsIgnoreCase("heads"))
 				{
 					++headCount;
 				}
@@ -54,7 +53,7 @@ public class PennyFlipper
 	private void printStats(double totalTries, double headCount)
 	{
 		double average = headCount/totalTries;
-		System.out.print("Out of " + totalTries + " tries on " + pennies.size() + " pennies, ");
+		System.out.print("Out of " + totalTries + " tries on " + pennies.length + " pennies, ");
 		// display proper string if only one head was flipped
 		if(headCount == 1)
 			System.out.println("you got all heads " + headCount +" time.");
@@ -71,8 +70,6 @@ public class PennyFlipper
 	private void getUserInput()
 	{
 		Scanner s = new Scanner(System.in);
-		//System.out.println("How many pennies?"); TODO
-		//numberOfPennies = s.nextInt();
 		System.out.println("How many times would you like to run the simulation?");
 		multiplier = s.nextDouble();
 		s.close();
@@ -84,8 +81,8 @@ public class PennyFlipper
 	 */
 	private void createPennies(int numberOfPennies)
 	{
-		pennies = new ArrayList<Penny>();
+		pennies = new Penny[numberOfPennies];
 		for(int i = 1; i <= numberOfPennies; i++)
-			pennies.add(new Penny("p"+i));
+			pennies[i - 1] = new Penny("p" + i);
 	}
 }
